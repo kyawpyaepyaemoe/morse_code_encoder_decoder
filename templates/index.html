@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Code Encoder & Decoder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Morse Code Encoder & Decoder</h1>
+
+        <!-- Encoder -->
+        <div class="card">
+            <h2>Encode Text → Morse</h2>
+            <form method="POST" action="/encode">
+                <textarea name="plain_text" placeholder="Enter your text here..." required></textarea>
+                <button type="submit">Encode</button>
+            </form>
+            {% if encoded %}
+                <div class="output">
+                    <h3>Encoded Morse:</h3>
+                    <p>{{ encoded }}</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Decoder -->
+        <div class="card">
+            <h2>Decode Morse → Text</h2>
+            <form method="POST" action="/decode">
+                <textarea name="morse_code" placeholder="Enter Morse code (use . and -)..." required></textarea>
+                <button type="submit">Decode</button>
+            </form>
+            {% if decoded %}
+                <div class="output">
+                    <h3>Decoded Text:</h3>
+                    <p>{{ decoded }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
